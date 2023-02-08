@@ -1,16 +1,14 @@
 <script setup lang="ts">
 const route = useRoute();
+const { tittleCaseWord } = useUtilities();
+
 useHead({
-  title: titleCaseWord(route.params.name as string),
+  title: tittleCaseWord(route.params.name as string),
 });
+
 definePageMeta({
   layout: "custom",
 });
-
-function titleCaseWord(word: string) {
-  if (!word) return word;
-  return word[0].toUpperCase() + word.substring(1).toLowerCase();
-}
 </script>
 <template>
   <div>
