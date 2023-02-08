@@ -3,7 +3,6 @@ useHead({ title: "Carshop" });
 </script>
 <template>
   <div>
-    <NavBar />
     <CarHero />
   </div>
 </template>
