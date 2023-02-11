@@ -7,11 +7,11 @@ export const useUtilities = () => {
   // }
 
   // function titleCaseWord untuk membuat title huruf awalnya jadi huruf besar
-  function tittleCaseWord(word: string) {
+  function titleCaseWord(word: string) {
     if (!word) return word;
     return word[0].toUpperCase() + word.substring(1).toLowerCase();
   }
   return {
-    tittleCaseWord,
+    titleCaseWord,
   };
 };

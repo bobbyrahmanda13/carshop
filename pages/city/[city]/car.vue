@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const route = useRoute();
-const { tittleCaseWord } = useUtilities();
+const { titleCaseWord } = useUtilities();
 
 useHead({
   title: `${
-    route.params.make ? tittleCaseWord(route.params.make as string) : "Cars"
-  } in ${tittleCaseWord(route.params.city as string)}`,
+    route.params.make ? titleCaseWord(route.params.make as string) : "Cars"
+  } in ${titleCaseWord(route.params.city as string)}`,
 });
 
 definePageMeta({

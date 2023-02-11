@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const route = useRoute();
-const { tittleCaseWord } = useUtilities();
+const { titleCaseWord } = useUtilities();
 
 useHead({
-  title: tittleCaseWord(route.params.name as string),
+  title: titleCaseWord(route.params.name as string),
 });
 
 definePageMeta({
