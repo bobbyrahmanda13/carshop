@@ -1,19 +1,31 @@
+<script setup lang="ts">
+interface Car {
+  id: number;
+  url: string;
+  name: string;
+  description: string;
+  price: string;
+  seats: number;
+  miles: string;
+}
+
+const props = defineProps<{
+  car: Car;
+}>();
+</script>
+
 <template>
   <div class="mt-10">
-    <img
-      src="https://www.pixelstalk.net/wp-content/uploads/2016/06/HD-Sweet-Car-Backgrounds.jpg"
-      class="w-full"
-      alt=""
-    />
-    <h1 class="mt-10 text-4xl">Ferrari Yellow Custom</h1>
+    <img :src="car.url" class="w-full" alt="" />
+    <h1 class="mt-10 text-4xl">{{ car.name }}</h1>
     <div class="text-slate-500 flex texg-lg mt-3 border-b pb-5 justify-between">
       <div class="flex">
-        <p class="mr-2">5 seats</p>
+        <p class="mr-2">{{ car.seats }}</p>
         <p class="mr-2">|</p>
-        <p class="mr-2">67,444 miles</p>
+        <p class="mr-2">{{ car.miles }} miles</p>
       </div>
       <div>
-        <p class="font-bold text-2xl">$25,555</p>
+        <p class="font-bold text-2xl">${{ car.price }}</p>
       </div>
     </div>
   </div>
