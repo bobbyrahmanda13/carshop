@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const city = ref("");
 const cityError = ref(false);
 // const router = useRouter(); => menggunakan useRouter composable default vue 3

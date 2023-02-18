@@ -1,14 +1,7 @@
-<script setup lang="ts">
-interface Car {
-  id: number;
-  url: string;
-  name: string;
-  description: string;
-  price: string;
-}
-const props = defineProps<{
-  car: Car;
-}>();
+<script setup>
+const props = defineProps({
+  car: Object,
+});
 </script>
 
 <template>

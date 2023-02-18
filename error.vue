@@ -1,8 +1,11 @@
-<script setup lang="ts">
-const error: string | any = useError();
+<script setup>
+const error = useError();
 
 const handleError = () => {
-  navigateTo("/");
+  // navigateTo("/");
+  clearError({
+    redirect: "/",
+  });
 };
 </script>
 <template>
