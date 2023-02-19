@@ -11,8 +11,6 @@ const updateModal = (key) => {
 const city = ref("");
 const route = useRoute();
 
-// "3534534" = 3534534
-// "houston" = NaN
 const onChangeLocation = () => {
   if (!city.value) return;
   if (!isNaN(parseInt(city.value))) {
