@@ -4,11 +4,14 @@ import heartOutline from "@/assets/heartOutline.png";
 
 const props = defineProps({
   car: Object,
+  favored: Boolean,
 });
 
-const favored = useState(`favored-${props.car.id}`, () => {
-  return false;
-});
+const emit = defineEmits(["favor"]);
+
+// const favored = useState(`favored-${props.car.id}`, () => {
+//   return false;
+// });
 </script>
 
 <template>
@@ -16,7 +19,7 @@ const favored = useState(`favored-${props.car.id}`, () => {
     class="relative shadow border w-full overflow-hidden mb-5 cursor-pointer h-[200px]"
   >
     <img
-      @click="favored = !favored"
+      @click="emit('favor', car.id)"
       :src="favored ? heartFilled : heartOutline"
       class="absolute w-7 right-5 top-2 z-20"
       alt=""

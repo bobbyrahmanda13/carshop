@@ -3,5 +3,9 @@ export default defineNuxtConfig({
   // typescript: {
   //   strict: true,
   // },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge"],
+  modules: [
+    "@nuxtjs/tailwindcss", 
+    "@nuxt/image-edge",
+    "@vueuse/nuxt"
+  ],
 });
