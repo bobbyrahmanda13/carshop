@@ -16,14 +16,12 @@ const handleFavorite = (id) => {
 </script>
 <template>
   <div class="w-full">
-    <ClientOnly>
-      <CarCard
-        v-for="car in cars"
-        :key="car.id"
-        :car="car"
-        @favor="handleFavorite"
-        :favored="car.id in favorite"
-      />
-    </ClientOnly>
+    <CarCard
+      v-for="car in cars"
+      :key="car.id"
+      :car="car"
+      @favor="handleFavorite"
+      :favored="car.id in favorite"
+    />
   </div>
 </template>
