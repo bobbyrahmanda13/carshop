@@ -1,5 +1,7 @@
 <script setup>
 const { makes } = useCars();
+const route = useRoute();
+const router = useRouter();
 
 const modal = ref({
   make: false,
@@ -10,8 +12,45 @@ const modal = ref({
 const updateModal = (key) => {
   modal.value[key] = !modal.value[key];
 };
+
+// price
+const priceRange = ref({
+  min: "",
+  max: "",
+});
+
+// console.log(route.query);
+const priceRangeText = computed(() => {
+  const minPrice = route.query.minPrice;
+  const maxPrice = route.query.maxPrice;
+  //
+  if (!minPrice && !maxPrice) return "Any";
+  else if (!minPrice && maxPrice) {
+    return `< IDR ${maxPrice}`;
+  } else if (minPrice && !maxPrice) {
+    return `> IDR ${minPrice}`;
+  } else {
+    return `IDR ${minPrice}-IDR ${maxPrice}`;
+  }
+});
+// console.log(priceRangeText);
+const onChangePrice = () => {
+  updateModal("price");
+  if (priceRange.value.max && priceRange.value.min) {
+    if (priceRange.value.min > priceRange.value.max) return;
+  }
+  router.push({
+    query: {
+      minPrice: priceRange.value.min,
+      maxPrice: priceRange.value.max,
+    },
+  });
+};
+
+// price end
+
+// city => location
 const city = ref("");
-const route = useRoute();
 
 const onChangeLocation = () => {
   if (!city.value) return;
@@ -24,6 +63,7 @@ const onChangeLocation = () => {
   city.value = "";
 };
 
+// make
 const onChangeMake = (make) => {
   updateModal("make");
   // console.log(make);
@@ -74,9 +114,37 @@ const onChangeMake = (make) => {
       </div>
     </div>
     <!-- make end -->
+    <!-- PRICE START -->
     <div class="p-5 flex justify-between relative cursor-pointer border-b">
       <h3>Price</h3>
-      <h3 class="text-blue-400 capitalize"></h3>
+      <h3 class="text-blue-400 capitalize" @click="updateModal('price')">
+        {{ priceRangeText }}
+      </h3>
+      <div
+        v-if="modal.price"
+        class="absolute border shadow left-56 p-6 top-1 -m-1 bg-white"
+      >
+        <input
+          class="border p-1 rounded"
+          type="number"
+          placeholder="Min"
+          v-model="priceRange.min"
+        />
+
+        <input
+          class="border p-1 rounded"
+          type="number"
+          placeholder="Max"
+          v-model="priceRange.max"
+        />
+        <button
+          class="bg-blue-400 w-full mt-2 rounded text-white p-1"
+          @click="onChangePrice"
+        >
+          Apply
+        </button>
+      </div>
     </div>
+    <!-- PRICE END -->
   </div>
 </template>
