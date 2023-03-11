@@ -93,6 +93,8 @@ const inputs = [
         placeholder=""
         @change-input="onChangeInput"
       />
+
+      <CarAdImage @change-input="onChangeInput" />
     </div>
   </div>
 </template>
