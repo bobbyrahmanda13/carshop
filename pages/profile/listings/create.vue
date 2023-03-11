@@ -5,7 +5,7 @@ definePageMeta({
 
 const { makes } = useCars();
 
-const info = useState("testing", () => {
+const info = useState("adInfo", () => {
   return {
     make: "",
     model: "",
